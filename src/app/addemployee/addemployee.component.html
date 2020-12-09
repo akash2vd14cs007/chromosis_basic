@@ -1,0 +1,97 @@
+<p-toast></p-toast>
+<p-toast position="center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+  <ng-template let-message pTemplate="message">
+      <div class="p-flex p-flex-column" style="flex: 1">
+          <div class="p-text-center">
+              <i class="pi pi-arrow-left" style="font-size: 3rem"></i>
+              <h4>{{message.summary}}</h4>
+              <p>{{message.detail}}</p>
+          </div>
+          <div class="p-grid p-fluid">
+              <div class="p-col-6">
+                  <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+              </div>
+              <div class="p-col-6">
+                  <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+              </div>
+          </div>
+      </div>
+  </ng-template>
+</p-toast>
+
+
+<div class="container">
+  <form (ngSubmit)="f.form.valid && onSave(f)"
+  #f="ngForm"
+  autocomplete="off">
+
+
+      <div class="form-group">
+        <Label>First Name</Label>
+        <input name="fname"  ngModel class="form-control" placeholder="Enter First Name" #fname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fname.invalid }" required />
+        <div *ngIf="f.submitted && fname.invalid" class="invalid-feedback">
+          <div *ngIf="fname.errors.required">First Name is required</div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <Label>Last Name</Label>
+        
+      <input name="lname" ngModel  class="form-control" placeholder="Enter Last Name" #lname="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lname.invalid }" required/>
+      <div *ngIf="f.submitted && lname.invalid" class="invalid-feedback">
+        <div *ngIf="lname.errors.required">Last Name is required</div>
+    </div>
+    </div>
+
+      <div class="form-group">
+        <Label>User Name</Label>
+        <input name="username" ngModel class="form-control" placeholder="Enter Username" #username="ngModel" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" required/>
+        <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
+          <div *ngIf="username.errors.required">Last Name is required</div>
+      </div>
+      </div>
+
+      <div class="form-group">
+        <Label>Password</Label>
+        <input class="form-control"
+                   id="password"
+                   type="password"
+                   placeholder="Password (required)"
+                   required
+                   ngModel
+                   name="passwordVar"
+                   #passwordVar="ngModel"
+                   [ngClass]="{'is-invalid': (passwordVar.touched || passwordVar.dirty) && !passwordVar.valid }" />
+            <span class="invalid-feedback">
+              <span *ngIf="passwordVar.hasError('required')">
+                Password is required.
+              </span>
+            </span>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control"
+        id="CnfrmPasswordId"
+        type="password"
+        placeholder="Confirm Password (required)"
+        required
+        appMustMatch
+         = "passwordVar"
+        ngModel
+        name="CnfmPasswordVar"
+        #CnfmPasswordVar="ngModel"
+        [ngClass]="{'is-invalid': (CnfmPasswordVar.touched || CnfmPasswordVar.dirty) && !CnfmPasswordVar.valid }" />
+   <span class="invalid-feedback">
+   <span *ngIf="CnfmPasswordVar.hasError('required')">
+     Confirm Password is required.
+   </span>
+   <span *ngIf="CnfmPasswordVar.hasError('passwordMatchError')">
+     Confirm Password & Password must be same.
+   </span>
+ </span>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>

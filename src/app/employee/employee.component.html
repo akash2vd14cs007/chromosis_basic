@@ -1,0 +1,47 @@
+<p-toast></p-toast>
+
+<p-sidebar [(visible)]="visibleSidebar1" [baseZIndex]="10000">
+  <h1 style="font-weight:normal">Left Sidebar</h1>
+  <p-button type="button" (click)="visibleSidebar1 = false" label="Save" styleClass="p-button-success"></p-button>
+  <p-button type="button" (click)="visibleSidebar1 = false" label="Cancel" styleClass="p-button-secondary"></p-button>
+  
+</p-sidebar>
+<p-button type="button" (click)="visibleSidebar1 = true" icon="pi pi-arrow-right"></p-button>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
+<div class="container">
+  
+  <input placeholder="Search Here" [(ngModel)]="searchText" type="text" >
+ 
+  <div class='container'>
+    <countdown #cd [config]="{leftTime:300}" ></countdown>
+    <button class="btn btn-lg btn-warning text-white float-right" routerLink="/add">Add New Employee</button>
+
+  </div>
+
+  <table class="table table-striped" >
+    <thead>
+      <tr>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Username</th>
+      <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of arr | filter: searchText ;let i=index">
+        <td >{{item.fname }}</td>
+        <td >{{item.lname }}</td>
+        <td  >{{item.username}}</td>
+       <td>
+          <!-- <button  type="button"  class="btn btn-default" aria-label="Left Align" (click)="onClickEdit(i)" >Edit</button>| -->
+          <p-button (click)="onClickEdit(i)" icon="pi pi-external-link" label="Edit"></p-button>&nbsp;
+          <!-- <button  type="button"  class="btn btn-default" aria-label="Left Align" (click)="onClickDelete(i)">Delete</button> -->
+          <button pButton type="button" (click)="onClickDelete(i)" icon="pi pi-times" class="p-button-danger" label="Delete"></button>
+       </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+
+ 
+

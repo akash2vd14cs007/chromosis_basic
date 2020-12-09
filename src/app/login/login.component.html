@@ -1,0 +1,62 @@
+
+<!-- <body>
+    <div id="login">  
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+            <form id="login-form" class="form" (ngSubmit)="onSubmit(f)"   #f="ngForm">
+               <h3 style="text-align: center;">LOGIN</h3>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" formControlName="username" name="username" class="form-control" />
+                   
+                    </div>
+               
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password"  name="password" class="form-control" />
+                   
+                    </div>
+              
+                <div class="form-group">
+                    
+                    <a routerLink="/signup" class="btn btn-link"> Register</a>
+                </div>
+            </form>
+            </div>
+            </div>
+            </div>
+           </div>
+          </div>
+       
+ 
+    </body> -->
+    <div class="container login-container">
+      <div class="row">
+        <div class="col-md-6 login-form-1">
+
+        </div>
+<div class="col-md-6 login-form-2">
+        <form (ngSubmit)="onSubmit(f)"   #f="ngForm" >
+          <div class="form-group">
+            <!-- <Label>User Name</Label> -->
+            <input name="username" pInputText pTooltip="Enter your username" tooltipPosition="top" [(ngModel)]="username" class="form-control" placeholder="Your Username" required/>
+          </div>
+          <div class="form-group">
+            <!-- <Label>Password</Label> -->
+            <input name="password" pInputText pTooltip="Enter your password" tooltipPosition="top" [(ngModel)]="password" class="form-control" placeholder="Your Password">
+          </div>
+         
+          <div class="form-group">
+            <button type="submit" class="btnSubmit">Login</button>
+          </div>
+          <div class="form-group">
+
+            <a href="#" class="ForgetPwd" value="Login">Forget Password?</a>
+        </div>
+        </form>
+</div>
+      </div>
+      </div>
+      
